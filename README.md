@@ -1,41 +1,27 @@
-# TWGrid-WGS84 台灣經緯網格系統
+# GapFiller 台灣生物資料空白區域填補活動網站模版
 ## 簡介
-一個基於WGS84座標系統，以經緯度切割劃分，適合於網頁動態呈現的台灣網格系統。
-## 座標系統與範圍
- 1. 基於WGS84座標系統。
- 2. 網格涵蓋範圍為經度116度至124度，緯度20度至26度40分，涵蓋台灣及外島的陸、海域。
- ![台灣網格系統](/img/TWGrid.jpg)
-## 網格系統與編號
-網格分為4層級
-### Level 1
-1. 邊長：經度1度，緯度50分，長約100公里。
-2. 編號：以YYXX四碼組成，以西南角的座標為基準，YY=西南角緯度x1.2，XX=西南角經度-100。  
-例：西南角的座標為(116度E, 20度N)，YY=20x1.2=24，XX=116-100=16，編號=2416。
-3. 面積：9174~9656平方公里，平均為9415±241平方公里。
-![Level 1網格](/img/level1.png)
-### Level 2: 將Level 1網格於經度及緯度各十等分
-1. 邊長：經度6分，緯度5分，長約10公里。
-2. 編號：以Level 1編號及短橫線接YX兩碼組成，Y以緯度十等分由南而北為0至9，X以經度十等分由西而東為0至9。  
-例：網格2416的緯度第一格，經度第二格之網格編號為2416-01。
-3. 面積：91.4~96.8平方公里，平均為94.1±2.7平方公里。
-![Level 2網格](/img/level2.png)
-### Level 3: 將Level 2網格於經度及緯度各二等分
-1. 邊長：經度3分，緯度2分30秒，長約5公里。
-2. 編號：以Level 2編號及短橫線接YX兩碼組成，Y以緯度二等分由南而北為0至1，X以經度二等分由西而東為0至1。  
-例：網格2416-00的緯度第二格，經度第一格之網格編號為2416-00-10。
-3. 面積：22.9~24.2平方公里，平均為23.55±0.65平方公里。
-![Level 3網格](/img/level3.png)
-### Level 4: 將Level 3網格於經度及緯度各五等分
-1. 邊長：經度36秒，緯度30秒，長約1公里。
-2. 編號：以Level 3編號及短橫線接YX兩碼組成，Y以緯度五等分由南而北為0至4，X以經度五等分由西而東為0至4。  
-例：網格2416-00-00的緯度第一格，經度第二格之網格編號為2416-00-00-01。
-3. 面積：0.91~0.97平方公里，平均為0.94±0.03平方公里。
-![Level 4網格](/img/level4.png)
-
-## 陸域網格
-以內政部國土測繪中心鄉鎮市區界線(TWD97經緯度)圖資(https://data.gov.tw/dataset/7441)套疊取得網格內涵蓋陸域之編號清單: GridsinLand.txt
-
-## 範例
-1. htmlsample/TWGRID_WGS84.html網頁範例可依地圖比例尺動態呈現不同層級之網格，且可點擊地圖上任何一點獲得該位置之網格編號。  
-javascript函式位於htmlsample/TWGRID_WGS84.js。
-2. https://gapfiller.tbn.org.tw/ eBird Taiwan秋季大挑戰 使用本網格系統。
+為鼓勵公民科學家至生物資料缺乏區域（冷點）進行補充調查而製作之活動網站，在補充調查活動開始前，可由網站發佈冷點位置訊息；於活動開始後，可展示調查成果之即時資訊。
+## 緣起
+本網站是配合[eBird Taiwan](https://ebird.org/taiwan/home)[秋季月挑戰](https://ebird.org/taiwan/news/ebird-taiwan-%E7%A7%8B%E5%AD%A3%E6%9C%88%E6%8C%91%E6%88%B0)所設計製作。該活動於2018年9月間，鼓勵民眾至冷點進行鳥類調查，活動結束後並提供獎品獎勵資料貢獻者。
+## 作者
+* 前端技術：吳世鴻
+* 美術設計：羅祈鈞
+## 功能
+1. 活動開始前，以網格圖層顯示冷點位置，方便活動參與者規劃調查路線與計畫。
+2. 活動開始後，可透過網站定位及Google導航功能，指引活動參與者抵達目標調查區。
+3. 活動期間，定時將已有觀察紀錄的冷點於地圖上標上旗幟，並統計總旗幟數、累計已有資料之網格比例，以及活動參與者之插旗數。
+4. 自適應網頁，適合各種銀幕尺寸瀏覽。
+## 組件
+* 網站版型：[Bootstrap SB Admin 2](https://startbootstrap.com/template-overviews/sb-admin-2/)
+* 地圖函式庫：[Leaflet](https://leafletjs.com/)、[Esri Leaflet](https://esri.github.io/esri-leaflet/)、[Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
+* 圖表函式庫：[D3.js](https://d3js.org/)、[Simple bar graph in v4](https://bl.ocks.org/d3noob/bdf28027e0ce70bd132edc64f1dd7ea4)
+* 字型：[王漢中細黑體](http://lms.ltu.edu.tw/course_open.php?courseID=12961&f=open_doc&cid=684505)
+## 使用說明
+1. 準備可執行html5、css、JavaScript的網站伺服器。
+2. 將website資料夾下所有檔案及資料夾複製至網站伺服器。
+3. /index.html: 修改網站標題、連結、圖示等活動資訊。
+4. /js/gapfiller.js: 設定基本參數。
+5. /data/WGS84Grid.js: 網格基礎資料，參考[TWGrid-WGS84](https://github.com/RedbirdTaiwan/TWGrid-WGS84)將現有生物資料筆數整理成以網格單位之統計資料，筆數為0者即為冷點網格。
+6. /data/ebirder.js: 活動參與者插旗統計資料，定時將活動結果計算出每位活動參與者的插旗數並更新本檔。
+7. /data/flag.js: 插旗座標及相關資訊之geojson檔，定時將活動結果計算出成功插旗之網格中心點座標(coordinates)、插旗人員名稱(name)、觀察時間(time)並更新本檔。
+8. /data/teamcolor.js: 旗標檔，可設定每個參與者的個人專屬旗標圖示，圖示檔儲存於/images/，預設圖示為flagR.png。
