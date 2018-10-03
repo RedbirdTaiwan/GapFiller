@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>eBird Taiwan 2018 秋季大挑戰</title>
+	<!-- Bootstrap core CSS-->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom fonts for this template-->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+	<!-- Custom styles for this template-->
+	<link href="css/sb-admin.css" rel="stylesheet">
+	<!-- 給svg用的中文字型-王漢中細黑體http://lms.ltu.edu.tw/course_open.php?courseID=12961&f=open_doc&cid=684505 -->
+	<style type="text/css">
+		@font-face {
+			font-family: wt011;
+			src: url(wt011.ttf);
+		}
+		body {
+			font-family: wt011;
+		}
+	</style>
+
+	<!--leaflet-->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+
+	<!-- Load Esri Leaflet from CDN -->
+	<script src="https://unpkg.com/esri-leaflet@2.1.4/dist/esri-leaflet.js" integrity="sha512-m+BZ3OSlzGdYLqUBZt3u6eA0sH+Txdmq7cqA1u8/B2aTXviGMMLOfrKyiIW7181jbzZAY0u+3jWoiL61iLcTKQ==" crossorigin=""></script>
+
+	<!-- Google map Provider -->
+	<script type="text/javascript" src='vendor/leaflet/js/OMProviders.js'></script>
+
+	<!--MarkerCluster-->
+	<link rel="stylesheet" href="vendor/leaflet/css/MarkerCluster.css" />
+	<link rel="stylesheet" href="vendor/leaflet/css/MarkerCluster.Default.css" />
+	<script src="vendor/leaflet/js/markercluster-src.js"></script>
+
+</head>
+
+<body class="fixed-nav sticky-footer bg-light" id="page-top" onload="init();">
+  <!-- Navigation-->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" id="mainNav">
+    <div class="navbar-brand" style="font-size: 1.25em;"></a><img src="images/eBird_Taiwan_logo.png" height="36">eBird Taiwan秋季大挑戰</div>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="2018 秋季月挑戰">
+          <a class="nav-link" href="https://ebird.org/taiwan/news/ebird-taiwan-%E7%A7%8B%E5%AD%A3%E6%9C%88%E6%8C%91%E6%88%B0" target="_blank">
+            <i class="fa fa-fw fa-award"></i>
+            <span class="nav-link-text">2018 秋季月挑戰</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="eBird Taiwan">
+          <a class="nav-link" href="https://ebird.org/taiwan/home" target="_blank">
+            <i class="fa fa-fw fa-feather-alt"></i>
+            <span class="nav-link-text">eBird Taiwan</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="eBird">
+          <a class="nav-link" href="https://www.facebook.com/groups/959038217460271/" target="_blank">
+            <i class="fab fa-facebook-square"></i>
+            <span class="nav-link-text">eBird Taiwan臉書</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right">
+          <a href="http://tesri.tesri.gov.tw/show_index.php" target="_blank">
+            <img src="https://ebird.org/content/tw/wp-content/uploads/sites/65/TESRI_LOGO_%E7%99%BD%E8%89%B2%E5%8E%BB%E8%83%8C-270x270.png" height="90" title="行政院農業委員會特有生物研究保育中心">
+          </a>
+          <a href="http://www.bird.org.tw/" target="_blank">
+            <img src="https://ebird.org/content/tw/wp-content/uploads/sites/65/2015%E4%B8%AD%E8%8F%AF%E9%B3%A5%E6%9C%83LOGO_1-2-270x222.png" height="90" title="中華民國野鳥學會">
+          </a>
+          <a href="https://www.tbn.org.tw/" target="_blank" title="台灣生物多樣性網絡">
+            <img src="images/logo-tbn0.png" height="30">
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="content-wrapper" style="overflow:hidden;">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card mb-3" style="background-color: #F7F7F7;">
+            <div class="card-header" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  使用說明:（點我可以開啟/關閉）
+                </button>
+              </h5>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body">
+                <ol>
+                  <li style="color:red;">手機請勿以臉書APP或臉書Messenger APP開啟連結，可能導致地圖無法正常操作。</li>
+                  <li>查詢插旗網格請將地圖放至最大(zoom in至1km*1km網格)。</li>
+                  <li>粉紅色網格代表eBird已有紀錄清單，請選擇空白網格插旗。</li>
+                  <li>點選地圖會出現小視窗，再點選「導航」即可規劃路線。</li>
+                  <li>佔領現況地圖手機版的速度可能較慢，或者偏遠處無網路訊號，建議預先於電腦版網站規畫好插旗路線。</li>
+                  <li>任何地圖使用上的問題請回報<a href='https://www.facebook.com/groups/959038217460271/' target='_blank'>eBird Taiwan 臉書社團</a>。</li>
+                  <li>挑戰規則請詳閱<a href="https://ebird.org/taiwan/news/ebird-taiwan-%E7%A7%8B%E5%AD%A3%E6%9C%88%E6%8C%91%E6%88%B0" target='_blank'>eBird Taiwan 秋季月挑戰</a>。</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <!-- Example Bar Chart Card-->
+          <div class="card mb-3" style="background-color: #F7F7F7;">
+            <img src='images/s1.png' style="height:55px; z-index: 3;">
+            <div class="card-body">
+                <div style="position: relative; top: -10px; right: -4em; z-index: 2;">
+                  <select name="basemaps" id="basemaps">
+                    <option value="GoogleHybrid">Google衛星</option>
+                    <option value="GoogleMap">Google地圖</option>
+                    <option value="OpenStreetMap">開放街圖</option>
+                    <option value="Imagery">衛星影像</option>
+                  </select>
+				  <input id="focu" type="button" value="定位" >
+				  <input id="whereyouare" type="hidden" value="">
+				</div>
+				        <div style="position: relative; text-align: right; height:740px;">
+                <div class="col-sm-12 text-center my-auto" id="mapid" style="height:800px; position: relative;top: -50px; z-index: 1;"></div>
+                <img src="images/Binoculars.svg" style="position: relative; top: -20em; right: 1em; z-index: 3; width:8em;">
+              </div>
+            </div>
+            <div class="card-footer small text-muted">Updated every hour</div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+			<div class="row" style="background-color: #F7F7F7;">
+				<div class="card mb-3" style="background-color: #F7F7F7;">
+					<img src='images/s2.png' style="height:55px;">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-lg-6" id="EffortMeterTaiwan" style="text-align: center;"></div>
+							<div class="col-lg-6" id="EffortMeterDonut"></div>
+						</div>
+					</div>
+					<div class="card-footer small text-muted">Updated every hour</div>
+				</div>
+				<div class="card mb-3" style="background-color: #F7F7F7;">
+					<img src='images/s3.png' style="height:55px;">
+					<div class="card-body">
+						<div id="Leaderboards" class="carousel slide" data-ride="carousel"></div>
+					</div>
+					<div class="card-footer small text-muted">Updated every hour</div>
+				</div>
+			</div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+      <div class="container">
+        <div class="text-center">
+          <small>Copyright © eBird Taiwan 2018</small>
+        </div>
+      </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fa fa-angle-up"></i>
+    </a>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	
+	<!--D3.js-->
+	<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+	
+	<!--gapfiller js-->
+	<!--gapfiller主js-->
+	<script src="js/gapfiller.js" type="text/javascript">//要這個檔裏設定主要參數</script>
+	<!--各種統計圖-->
+	<script src="js/chart.js" type="text/javascript"></script>
+	<!--網格資料-->
+	<script src="data/WGS84Grid.js" type="text/javascript"></script>
+	<!--活動努力量資料-->
+	<script src="data/flag.js" type="text/javascript"></script>
+	<script src="data/ebirder.js" type="text/javascript"></script>
+	<script src="data/teamcolor.js" type="text/javascript"></script>
+  </div>
+</body>
+
+</html>
