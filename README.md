@@ -22,7 +22,8 @@
 2. 將website資料夾下所有檔案及資料夾複製至網站伺服器。
 3. /index.html: 修改網站標題、連結、圖示等活動資訊。
 4. /js/gapfiller.js: 設定基本參數。
-5. /data/WGS84Grid.js: 網格基礎資料，參考[TWGrid-WGS84](https://github.com/RedbirdTaiwan/TWGrid-WGS84)將現有生物資料筆數整理成以網格單位之統計資料，筆數為0者即為冷點網格。
-6. /data/ebirder.js: 活動參與者插旗統計資料，定時將活動結果計算出每位活動參與者的插旗數並更新本檔。
-7. /data/flag.js: 插旗座標及相關資訊之geojson檔，定時將活動結果計算出成功插旗之網格中心點座標(coordinates)、插旗人員名稱(name)、觀察時間(time)並更新本檔。
-8. /data/teamcolor.js: 旗標檔，可設定每個參與者的個人專屬旗標圖示，圖示檔儲存於/images/，預設圖示為flagR.png。
+5. /images/Binoculars.svg: 修改網格顏色圖例之色碼及數量區間。
+6. /data/WGS84Grid.js: 網格基礎資料，參考[TWGrid-WGS84](https://github.com/RedbirdTaiwan/TWGrid-WGS84)將現有生物資料筆數整理成以網格單位之統計資料，筆數為0者即為冷點網格。
+7. /data/ebirder.js: 活動參與者插旗統計資料，定時將活動結果計算出每位活動參與者的插旗數並更新本檔。
+8. /data/flag.js: 插旗座標及相關資訊之geojson檔，定時將活動結果計算出成功插旗之網格中心點座標(coordinates)、插旗人員名稱(name)、觀察時間(time)並更新本檔。
+9. /data/teamcolor.js: 旗標檔，可設定每個參與者的個人專屬旗標圖示，圖示檔儲存於/images/，預設圖示為flagR.png。
