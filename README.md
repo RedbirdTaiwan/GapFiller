@@ -11,6 +11,7 @@
 2. 活動開始後，可透過網站定位及Google導航功能，指引活動參與者抵達目標調查區。
 3. 活動期間，定時將已有觀察紀錄的冷點於地圖上標上旗幟，並統計總旗幟數、累計已有資料之網格比例，以及活動參與者之插旗數。
 4. 自適應網頁，適合各種銀幕尺寸瀏覽。
+![eBird Taiwan秋季大挑戰](samplepage.jpg)
 ## 組件
 * 網站版型：[Bootstrap SB Admin 2](https://startbootstrap.com/template-overviews/sb-admin-2/)
 * 地圖函式庫：[Leaflet](https://leafletjs.com/)、[Esri Leaflet](https://esri.github.io/esri-leaflet/)、[Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
