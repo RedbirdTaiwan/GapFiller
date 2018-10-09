@@ -13,7 +13,7 @@
 4. 自適應網頁，適合各種銀幕尺寸瀏覽。
 ![eBird Taiwan秋季大挑戰](samplepage.jpg)
 ## 組件
-* 網站版型：[Bootstrap SB Admin 2](https://startbootstrap.com/template-overviews/sb-admin-2/)
+* 網站版型：[Bootstrap SB Admin](https://startbootstrap.com/template-overviews/sb-admin/)
 * 地圖函式庫：[Leaflet](https://leafletjs.com/)、[Esri Leaflet](https://esri.github.io/esri-leaflet/)、[Leaflet.markercluster](https://github.com/Leaflet/Leaflet.markercluster)
 * 圖表函式庫：[D3.js](https://d3js.org/)、[Simple bar graph in v4](https://bl.ocks.org/d3noob/bdf28027e0ce70bd132edc64f1dd7ea4)
 * 字型：[王漢中細黑體](http://lms.ltu.edu.tw/course_open.php?courseID=12961&f=open_doc&cid=684505)
