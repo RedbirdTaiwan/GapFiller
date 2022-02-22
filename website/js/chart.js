@@ -78,7 +78,7 @@ function simpledonut(minpoint,maxpoint,nowpoint,startpoint,targets,targetelement
 	var fontsize = 90/targets.length;
 	targets.forEach(function(e) {
 		p.push(nowvalue/e);
-		t.push('目標'+i+' '+e+'格：' + Math.floor(nowvalue/3399*100)+'%');
+		t.push('目標'+i+' '+e+'格：' + Math.floor(nowvalue/e*100)+'%');
 		f.push('#555555');
 		s.push(fontsize+'px');
 		if( nowvalue >= e){
